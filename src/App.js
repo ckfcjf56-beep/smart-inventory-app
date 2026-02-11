@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const BASE_URL = 'https://inventory-backend-2-6yqv.onrender.com/api/inventory';
+const BASE_URL = 'https://inventory-backend-2-6yqv.onrender.com/api';
 
 // ============================================================
 // 부품종류별 아이콘 (SVG)
