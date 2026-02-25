@@ -87,9 +87,20 @@ function App() {
   const [alerts, setAlerts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [userName, setUserName] = useState('');
 
   // ✨ 알림 체크 (앱 시작 및 주기적)
   useEffect(() => {
+// 앱이 켜지자마자 이름을 물어봅니다.
+const savedName = localStorage.getItem('inventory_user');
+if (savedName) {
+  setUserName(savedName);
+} else {
+  const inputName = prompt("성함을 입력해주세요 (재고 로그에 기록됩니다):", "홍길동");
+  const finalName = inputName || "미확인 사용자";
+  setUserName(finalName);
+  localStorage.setItem('inventory_user', finalName);
+}
     loadCategories();
     loadAlerts();
     
@@ -409,7 +420,8 @@ function DetailPage({ items, categoryName, onBack, onUpdate }) {
       await axios.post(`${BASE_URL}/inventory/manual-update`, {
         id: item.id,
         현재수량: editValue,
-        action
+        action,
+        user: userName // ✨ 추가: 서버로 지금 작업자 이름을 보냅니다.
       });
       setEditingId(null);
       await onUpdate(); // ✅ 데이터 새로고침
