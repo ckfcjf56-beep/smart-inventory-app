@@ -218,6 +218,7 @@ if (savedName) {
             categoryName={selectedCategory}
             onBack={() => setPage('main')}
             onUpdate={refreshData}
+            userName={userName}
           />
         );
       case 'summary':
@@ -404,7 +405,7 @@ function MainPage({ categories, onCategoryClick, onSummaryClick, alerts, onSearc
 // ============================================================
 // DetailPage (카테고리 클릭 후 리스트 + ✨ 수동 수정 UI)
 // ============================================================
-function DetailPage({ items, categoryName, onBack, onUpdate }) {
+function DetailPage({ items, categoryName, onBack, onUpdate, userName }) { 
   const [editingId, setEditingId] = useState(null);
   const [editValue, setEditValue] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
