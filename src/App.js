@@ -372,7 +372,9 @@ function MainPage({ categories, onCategoryClick, onSummaryClick, alerts, onSearc
             {searchResults.map(item => (
               <div key={item.id} className="search-result-item" onClick={() => { onSearchResultClick(item); setSearchQuery(''); }}>
                 <div className="search-result-top">
-                  <span className="search-result-category">{item.부품종류}</span>
+                  <span className="search-result-category">
+  {item.대분류} <small>({item.부품종류})</small> {/* ✨ 대분류와 소분류 함께 표시 */}
+</span>
                   <span className={`search-result-qty ${item.현재수량 <= item.최소보유수량 ? 'low' : ''}`}>
                     {item.현재수량}개
                   </span>
