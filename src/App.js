@@ -482,6 +482,9 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
                   <span className="detail-info-label">최종수정시각</span>
                   <span className="detail-info-value">{item.최종수정시각}</span>
                 </div>
+                <div className="detail-info-row">
+                   <span className="detail-info-label">최종 작업자</span>
+                   <span className="detail-info-value">👤 {item.작업자 || '기록 없음'}</span>
               </div>
 
               {/* ✨ 수동 수정 UI */}
@@ -701,7 +704,9 @@ function LogsPage({ onBack }) {
                 </span>
               </div>
               <div className="log-meta">
-                <span>{log.적용설비}</span> • <span className="log-user">{log.user}</span>
+                <span>📍 {log.적용설비}</span>
+                <span style={{ margin: '0 8px', color: '#ccc' }}>|</span>
+                <span className="log-user-badge">👤 {log.user || '시스템'}</span>
               </div>
             </div>
           </div>
