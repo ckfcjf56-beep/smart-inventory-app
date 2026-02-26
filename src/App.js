@@ -506,7 +506,7 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
 
       <div className="detail-list">
         {items.map((item) => {
-          const isLow = item.현재수량 <= item.최소보유수량;
+         const isLow = item.최소보유수량 > 0 && item.현재수량 <= item.최소보유수량;
           const stockPercent = Math.min((item.현재수량 / item.최소보유수량) * 100, 100);
           const isEditing = editingId === item.id;
 
