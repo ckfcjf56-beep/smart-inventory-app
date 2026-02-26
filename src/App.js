@@ -473,7 +473,10 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
           </svg>
           뒤로
         </button>
-        <h2>{categoryName}</h2>
+        <div className="detail-category-header">
+  <h2 className="main-cat-title">{items[0]?.대분류 || categoryName}</h2>
+  <span className="sub-cat-badge">{categoryName}</span>
+</div>
       </div>
 
       <div className="detail-list">

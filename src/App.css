@@ -1319,3 +1319,25 @@ body {
   word-break: break-all;    /* 긴 단어도 자동 줄바꿈 */
   min-height: 40px;
 }
+/* 대분류 제목 디자인 */
+.main-cat-title {
+  font-size: 1.8rem;
+  color: #1a202c;
+  margin-bottom: 5px;
+}
+/* 소분류(부품종류) 배지 디자인 */
+.sub-cat-badge {
+  background-color: #ebf8ff;
+  color: #2b6cb0;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: 1px solid #bee3f8;
+}
+
+.detail-category-header {
+  margin-bottom: 25px;
+  border-left: 6px solid #3182ce;
+  padding-left: 15px;
+}
