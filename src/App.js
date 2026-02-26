@@ -411,9 +411,31 @@ function MainPage({ categories, onCategoryClick, onSummaryClick, alerts, onSearc
               onClick={() => onCategoryClick(cat.name)}
             >
               <div className="category-icon-wrap">
-                {categoryIcons[cat.name] || defaultIcon}
-              </div>
-              <div className="category-label">{cat.name}</div>
+  {/* ✨ 대분류 이름에 따라 실시간으로 아이콘 매칭 */}
+  {(() => {
+    switch (cat.name) {
+      case '솔밸브류':
+        return <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 12h24v24H12zM24 8v4M24 36v4M8 24h4M36 24h4M18 24h12M24 18v12"/></svg>;
+      case '실린더류':
+        return <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="10" y="20" width="20" height="8" rx="1"/><rect x="30" y="16" width="4" height="16"/><path d="M40 24h-6M10 24H4"/></svg>;
+      case '모터류':
+        return <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="4"/><path d="M24 10v4M24 34v4M10 24h4M34 24h4"/></svg>;
+      case '계장부품류':
+        return <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M10 38a14 14 0 1 1 28 0M24 38V20l8 4"/><circle cx="24" cy="38" r="2" fill="currentColor"/></svg>;
+      case '릴레이류':
+        return <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="14" y="10" width="20" height="28" rx="2"/><path d="M14 18h20M14 28h20M20 10v28"/></svg>;
+      case '히터류':
+        return <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 10v24c0 4 8 4 8 0V10c0-4 8-4 8 0v24c0 4 8 4 8 0V10M10 40h28"/></svg>;
+      case '베어링류':
+        return <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="6"/><circle cx="24" cy="10" r="2" fill="currentColor"/><circle cx="38" cy="24" r="2" fill="currentColor"/><circle cx="24" cy="38" r="2" fill="currentColor"/><circle cx="10" cy="24" r="2" fill="currentColor"/></svg>;
+      case '기타':
+        return <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="8" y="8" width="32" height="32" rx="4"/><path d="M8 20h32M20 8v32"/></svg>;
+      default:
+        return defaultIcon;
+    }
+  })()}
+</div>
+<div className="category-label">{cat.name}</div>
               <div className="category-meta">
                 <span className="category-count">{cat.itemCount}종</span>
                 {hasLowStock && (
