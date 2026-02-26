@@ -488,10 +488,13 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
           return (
           <div key={item.id} className={`detail-card ${isLow ? 'low-stock' : ''}`}>
   <div className="detail-card-top">
-    <div className="detail-model-wrapper">
-      <span className="detail-model">{item.모델명}</span>
-      {isLow && <span className="low-stock-badge-inline">⚠️ 재고부족</span>}
-    </div>
+  <div className="detail-model-wrapper">
+    {/* ✨ 부품종류(소분류) 텍스트 태그 추가 */}
+    <span className="sub-category-tag">{item.부품종류}</span>
+    
+    <span className="detail-model">{item.모델명}</span>
+    {isLow && <span className="low-stock-badge-inline">⚠️ 재고부족</span>}
+  </div>
     {!isEditing && (
                   <span className={`detail-quantity ${isLow ? 'text-red' : ''}`}>
                     {item.현재수량} <small>개</small>
