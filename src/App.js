@@ -487,6 +487,12 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
                    <span className="detail-info-label">최종 작업자</span>
                    <span className="detail-info-value">👤 {item.작업자 || '기록 없음'}</span>
               </div>
+              <div className="detail-usage-section">
+                <div className="detail-info-label">사용 용도</div>
+                <div className="detail-usage-box">
+                {item.용도 || '등록된 용도 정보가 없습니다.'}
+              </div>
+              </div>
               </>
 
               {/* ✨ 수동 수정 UI */}
