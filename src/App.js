@@ -478,6 +478,7 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
                   <span className="detail-info-label">최소보유수량</span>
                   <span className="detail-info-value">{item.최소보유수량} 개</span>
                 </div>
+                <>
                 <div className="detail-info-row">
                   <span className="detail-info-label">최종수정시각</span>
                   <span className="detail-info-value">{item.최종수정시각}</span>
@@ -486,6 +487,7 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
                    <span className="detail-info-label">최종 작업자</span>
                    <span className="detail-info-value">👤 {item.작업자 || '기록 없음'}</span>
               </div>
+              </>
 
               {/* ✨ 수동 수정 UI */}
               {isEditing ? (
@@ -530,6 +532,7 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
                   수정
                 </button>
               )}
+              </div>
 
               {/* 재고 게이지 바 */}
               <div className="stock-gauge-bg">
