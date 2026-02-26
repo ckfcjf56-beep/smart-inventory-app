@@ -63,6 +63,32 @@ const categoryIcons = {
       <line x1="22" y1="28" x2="26" y2="28" />
     </svg>
   ),
+  '베어링': (
+    <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="24" cy="24" r="18" />
+      <circle cx="24" cy="24" r="6" />
+      <circle cx="24" cy="12" r="2" fill="currentColor" stroke="none" />
+      <circle cx="34.4" cy="18" r="2" fill="currentColor" stroke="none" />
+      <circle cx="34.4" cy="30" r="2" fill="currentColor" stroke="none" />
+      <circle cx="24" cy="36" r="2" fill="currentColor" stroke="none" />
+      <circle cx="13.6" cy="30" r="2" fill="currentColor" stroke="none" />
+      <circle cx="13.6" cy="18" r="2" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  '계장부품': (
+    <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 38a14 14 0 1 1 28 0" />
+      <path d="M24 38V20l6 4" />
+      <line x1="14" y1="30" x2="16" y2="32" />
+      <line x1="32" y1="30" x2="34" y2="32" />
+    </svg>
+  ),
+  '기타': (
+    <svg viewBox="0 0 48 48" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M8 12h32M8 24h32M8 36h32" />
+      <rect x="6" y="6" width="36" height="36" rx="4" />
+    </svg>
+  ),
 };
 
 const defaultIcon = (
