@@ -483,12 +483,13 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
           const isEditing = editingId === item.id;
 
           return (
-            <div key={item.id} className={`detail-card ${isLow ? 'low-stock' : ''}`}>
-              {isLow && <div className="low-stock-ribbon">재고 부족</div>}
-              
-              <div className="detail-card-top">
-                <span className="detail-model">{item.모델명}</span>
-                {!isEditing && (
+          <div key={item.id} className={`detail-card ${isLow ? 'low-stock' : ''}`}>
+  <div className="detail-card-top">
+    <div className="detail-model-wrapper">
+      <span className="detail-model">{item.모델명}</span>
+      {isLow && <span className="low-stock-badge-inline">⚠️ 재고부족</span>}
+    </div>
+    {!isEditing && (
                   <span className={`detail-quantity ${isLow ? 'text-red' : ''}`}>
                     {item.현재수량} <small>개</small>
                   </span>
