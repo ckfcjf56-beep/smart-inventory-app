@@ -747,8 +747,16 @@ function LogsPage({ onBack }) {
 
       <div className="logs-list">
         {logs.length === 0 && <div className="logs-empty">변경 이력이 없습니다</div>}
-        {logs.map(log => (
-          <div key={log.id} className={`log-item ${log.action}`}>
+        {logs
+  .filter(log => {
+    // ✨ 만약 재고 부족 알림 관련 로직이 섞여 있다면 여기서 걸러냅니다.
+    // 하지만 가장 확실한 방법은 엑셀에서 가져온 '최소보유수량'을 참조하는 것입니다.
+    // (현재 로그 데이터 구조에 최소보유수량이 포함되어 있다면 아래 조건을 씁니다)
+    if (log.최소보유수량 === 0) return false; 
+    return true;
+  })
+  .map(log => (
+    <div key={log.id} className={`log-item ${log.action}`}>
             <div className="log-header">
               <span className={`log-action ${log.action === '입고' ? 'in' : log.action === '출고' ? 'out' : 'edit'}`}>
                 {log.action === '입고' ? '📥' : log.action === '출고' ? '📤' : '✏️'} {log.action}
