@@ -164,7 +164,7 @@ if (savedName) {
 
       // 긴급 알림 (재고 0) 브라우저 푸시
       if ('Notification' in window && Notification.permission === 'granted') {
-        const criticalAlerts = newAlerts.filter(a => a.긴급도 === 'critical');
+        const criticalAlerts = newAlerts.filter(a => a.최소보유수량 > 0 && a.긴급도 === 'critical');
         if (criticalAlerts.length > 0) {
           new Notification('⚠️ 긴급 재고 부족', {
             body: `${criticalAlerts.length}개 품목의 재고가 완전 소진되었습니다!`,
@@ -393,8 +393,8 @@ function MainPage({ categories, onCategoryClick, onSummaryClick, alerts, onSearc
       </div>
 
       {/* ✨ 긴급 알림 배너 */}
-      {alerts.filter(a => a.긴급도 === 'critical').length > 0 && (
-        <div className="alert-banner critical">
+      {alerts.filter(a => a.최소보유수량 > 0 && a.긴급도 === 'critical').length > 0 && (
+  <div className="alert-banner critical">
           <div className="alert-banner-icon">🚨</div>
           <div className="alert-banner-text">
             <strong>긴급!</strong> {alerts.filter(a => a.긴급도 === 'critical').length}개 품목 재고 소진
@@ -506,7 +506,7 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
 
       <div className="detail-list">
         {items.map((item) => {
-         const isLow = item.최소보유수량 > 0 && item.현재수량 <= item.최소보유수량;
+          const isLow = item.현재수량 <= item.최소보유수량;
           const stockPercent = Math.min((item.현재수량 / item.최소보유수량) * 100, 100);
           const isEditing = editingId === item.id;
 
@@ -747,16 +747,8 @@ function LogsPage({ onBack }) {
 
       <div className="logs-list">
         {logs.length === 0 && <div className="logs-empty">변경 이력이 없습니다</div>}
-        {logs
-  .filter(log => {
-    // ✨ 만약 재고 부족 알림 관련 로직이 섞여 있다면 여기서 걸러냅니다.
-    // 하지만 가장 확실한 방법은 엑셀에서 가져온 '최소보유수량'을 참조하는 것입니다.
-    // (현재 로그 데이터 구조에 최소보유수량이 포함되어 있다면 아래 조건을 씁니다)
-    if (log.최소보유수량 === 0) return false; 
-    return true;
-  })
-  .map(log => (
-    <div key={log.id} className={`log-item ${log.action}`}>
+        {logs.map(log => (
+          <div key={log.id} className={`log-item ${log.action}`}>
             <div className="log-header">
               <span className={`log-action ${log.action === '입고' ? 'in' : log.action === '출고' ? 'out' : 'edit'}`}>
                 {log.action === '입고' ? '📥' : log.action === '출고' ? '📤' : '✏️'} {log.action}
