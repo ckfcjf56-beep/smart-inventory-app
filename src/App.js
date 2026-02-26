@@ -262,10 +262,11 @@ if (savedName) {
             searchResults={searchResults}
             isSearching={isSearching}
             onSearchResultClick={(item) => {
-              handleCategoryClick(item.부품종류);
-              setSearchResults([]);
-              setIsSearching(false);
-            }}
+  // ✨ 소분류가 아닌 '대분류' 이름을 전달하여 해당 카테고리 전체를 불러옵니다.
+  handleCategoryClick(item.대분류 || '기타'); 
+  setSearchResults([]);
+  setIsSearching(false);
+}}
           />
         );
     }
