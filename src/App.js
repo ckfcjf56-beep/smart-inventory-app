@@ -815,7 +815,8 @@ function AIChatBar({ onInventoryUpdate }) {
       
       const res = await axios.post(`${BASE_URL}/ai/chat`, {
         message: userMsg.text,
-        conversationHistory: history
+        conversationHistory: history,
+        user: localStorage.getItem('inventory_user') || '미확인 사용자' // 실제 사용자 이름 전달
       });
 
       let aiText = res.data.message;
