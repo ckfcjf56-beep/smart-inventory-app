@@ -552,10 +552,12 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
                 {item.용도 || '등록된 용도 정보가 없습니다.'}
               </div>
               {/* ✨ 보관 위치 정보 추가 */}
-                <div className="detail-info-row" style={{ marginTop: '4px', color: '#059669', fontWeight: 'bold' }}>
-                   <span className="detail-info-label">📍 보관 위치</span>
-                   <span className="detail-info-value">{item.보관장소 || '위치 미지정'}</span>
-                </div>
+                <div className="detail-info-row" style={{ marginTop: '4px', color: '#374151' }}>
+   <span className="detail-info-label">보관 위치</span>
+   <span className="detail-info-value" style={{ fontWeight: '600', color: '#059669' }}>
+     {item.보관장소}
+   </span>
+</div>
                 <div className="detail-usage-section"></div>
               </div>
               </>
