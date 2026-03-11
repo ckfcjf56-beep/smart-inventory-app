@@ -553,11 +553,11 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName }) {
               </div>
               {/* ✨ 아이콘 없이 깔끔하게 텍스트로 보관 위치 표시 */}
                 <div className="detail-info-row" style={{ marginTop: '4px', color: '#374151' }}>
-                   <span className="detail-info-label">보관 위치</span>
-                   <span className="detail-info-value" style={{ fontWeight: '600', color: '#059669' }}>
-                     {item.보관장소}
-                   </span>
-                </div>
+   <span className="detail-info-label">보관 위치</span>
+   <span className="detail-info-value" style={{ fontWeight: '600', color: '#059669' }}>
+     {item.보관장소 || '위치 미지정'}
+   </span>
+</div>
                 <div className="detail-usage-section"></div>
               </div>
               </>
