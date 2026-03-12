@@ -268,12 +268,11 @@ if (savedName) {
             searchResults={searchResults}
             isSearching={isSearching}
             onSearchResultClick={(item) => {
-              // ✨ 검색 결과 클릭 시 해당 아이템의 ID를 저장하고 이동
-              setHighlightId(item.id); 
-              handleCategoryClick(item.대분류 || '기타'); 
-              setSearchResults([]);
-              setIsSearching(false);
-            }}
+  setHighlightId(item.id); // ✨ 클릭한 아이템의 ID를 먼저 저장 (추가)
+  handleCategoryClick(item.대분류 || '기타'); 
+  setSearchResults([]);
+  setIsSearching(false);
+}}
           />
         );
     }
@@ -531,7 +530,7 @@ function DetailPage({ items, categoryName, onBack, onUpdate, userName, highlight
           const isLow = item.현재수량 <= item.최소보유수량;
           const stockPercent = Math.min((item.현재수량 / item.최소보유수량) * 100, 100);
           const isEditing = editingId === item.id;
-          const isHighlighted = item.id === highlightId;
+          const isHighlighted = item.id == highlightId;
 
           return (
             <div 
@@ -717,27 +716,6 @@ function SummaryPage({ summary, onBack }) {
           </div>
         </div>
       )}
-
-      <div className="summary-section">
-        <h3 className="section-title">종류별 재고 현황</h3>
-        <div className="category-bars">
-          {Object.entries(summary.categoryBreakdown).map(([name, info]) => (
-            <div key={name} className="category-bar-item">
-              <div className="category-bar-label">
-                <span>{name}</span>
-                <span className="category-bar-num">{info.total} 개</span>
-              </div>
-              <div className="category-bar-bg">
-                <div
-                  className={`category-bar-fill ${info.lowStock > 0 ? 'bar-warning' : 'bar-normal'}`}
-                  style={{ width: `${Math.min((info.total / summary.totalQuantity) * 100 * 4, 100)}%` }}
-                ></div>
-              </div>
-              <div className="category-bar-sub">{info.count}종 · {info.lowStock > 0 ? `부족 ${info.lowStock}종` : '정상'}</div>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
